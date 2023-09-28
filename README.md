@@ -3,7 +3,7 @@ parent:
   order: false
 -->
 
-**WARNING**: This is a fork of the cosmos-sdk for the purposes of Wormhole.
+**WARNING**: This is a fork of the cosmos-sdk for the purposes of Deltaswap.
 
 <div align="center">
   <h1> Cosmos SDK </h1>

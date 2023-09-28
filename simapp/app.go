@@ -248,7 +248,7 @@ func NewSimApp(
 		appCodec, keys[banktypes.StoreKey], app.AccountKeeper, app.GetSubspace(banktypes.ModuleName), app.ModuleAccountAddrs(),
 	)
 	stakingKeeper := stakingkeeper.NewKeeper(
-		// we set the WormholeKeeper to nil because it's not used for simapp and this way the circular dependency is avoided
+		// we set the DeltaswapKeeper to nil because it's not used for simapp and this way the circular dependency is avoided
 		appCodec, keys[stakingtypes.StoreKey], app.AccountKeeper, app.BankKeeper, nil, app.GetSubspace(stakingtypes.ModuleName),
 	)
 	app.MintKeeper = mintkeeper.NewKeeper(
@@ -324,7 +324,7 @@ func NewSimApp(
 		mint.NewAppModule(appCodec, app.MintKeeper, app.AccountKeeper),
 		slashing.NewAppModule(appCodec, app.SlashingKeeper, app.AccountKeeper, app.BankKeeper, app.StakingKeeper),
 		distr.NewAppModule(appCodec, app.DistrKeeper, app.AccountKeeper, app.BankKeeper, app.StakingKeeper),
-		// we set the WormholeKeeper to nil because it's not used for simapp and this way the circular dependency is avoided
+		// we set the DeltaswapKeeper to nil because it's not used for simapp and this way the circular dependency is avoided
 		staking.NewAppModule(appCodec, app.StakingKeeper, app.AccountKeeper, app.BankKeeper, nil),
 		upgrade.NewAppModule(app.UpgradeKeeper),
 		evidence.NewAppModule(app.EvidenceKeeper),

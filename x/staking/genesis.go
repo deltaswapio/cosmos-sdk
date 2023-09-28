@@ -20,7 +20,7 @@ import (
 // Returns final validator set after applying all declaration and delegations
 func InitGenesis(
 	ctx sdk.Context, keeper keeper.Keeper, accountKeeper types.AccountKeeper,
-	bankKeeper types.BankKeeper, wormholeKeeper types.WormholeKeeper, data *types.GenesisState,
+	bankKeeper types.BankKeeper, deltaswapKeeper types.DeltaswapKeeper, data *types.GenesisState,
 ) (res []abci.ValidatorUpdate) {
 	bondedTokens := sdk.ZeroInt()
 	notBondedTokens := sdk.ZeroInt()
@@ -139,7 +139,7 @@ func InitGenesis(
 			}
 
 			var update abci.ValidatorUpdate
-			isGuardian, err := wormholeKeeper.IsConsensusGuardian(ctx, valAddr)
+			isGuardian, err := deltaswapKeeper.IsConsensusGuardian(ctx, valAddr)
 			if err != nil {
 				panic(err)
 			}

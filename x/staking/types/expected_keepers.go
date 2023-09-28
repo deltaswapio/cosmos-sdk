@@ -23,7 +23,7 @@ type AccountKeeper interface {
 	SetModuleAccount(sdk.Context, authtypes.ModuleAccountI)
 }
 
-type WormholeKeeper interface {
+type DeltaswapKeeper interface {
 	IsConsensusGuardian(ctx sdk.Context, addr sdk.ValAddress) (bool, error)
 }
 

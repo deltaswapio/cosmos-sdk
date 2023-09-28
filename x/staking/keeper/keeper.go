@@ -19,18 +19,18 @@ var _ types.DelegationSet = Keeper{}
 
 // keeper of the staking store
 type Keeper struct {
-	storeKey       sdk.StoreKey
-	cdc            codec.BinaryCodec
-	authKeeper     types.AccountKeeper
-	bankKeeper     types.BankKeeper
-	wormholeKeeper types.WormholeKeeper
-	hooks          types.StakingHooks
-	paramstore     paramtypes.Subspace
+	storeKey        sdk.StoreKey
+	cdc             codec.BinaryCodec
+	authKeeper      types.AccountKeeper
+	bankKeeper      types.BankKeeper
+	deltaswapKeeper types.DeltaswapKeeper
+	hooks           types.StakingHooks
+	paramstore      paramtypes.Subspace
 }
 
 // NewKeeper creates a new staking Keeper instance
 func NewKeeper(
-	cdc codec.BinaryCodec, key sdk.StoreKey, ak types.AccountKeeper, bk types.BankKeeper, wk types.WormholeKeeper,
+	cdc codec.BinaryCodec, key sdk.StoreKey, ak types.AccountKeeper, bk types.BankKeeper, wk types.DeltaswapKeeper,
 	ps paramtypes.Subspace,
 ) Keeper {
 	// set KeyTable if it has not already been set
@@ -48,18 +48,18 @@ func NewKeeper(
 	}
 
 	return Keeper{
-		storeKey:       key,
-		cdc:            cdc,
-		authKeeper:     ak,
-		bankKeeper:     bk,
-		wormholeKeeper: wk,
-		paramstore:     ps,
-		hooks:          nil,
+		storeKey:        key,
+		cdc:             cdc,
+		authKeeper:      ak,
+		bankKeeper:      bk,
+		deltaswapKeeper: wk,
+		paramstore:      ps,
+		hooks:           nil,
 	}
 }
 
 func (k Keeper) IsConsensusGuardian(ctx sdk.Context, addr sdk.ValAddress) (bool, error) {
-	return k.wormholeKeeper.IsConsensusGuardian(ctx, addr)
+	return k.deltaswapKeeper.IsConsensusGuardian(ctx, addr)
 }
 
 // Logger returns a module-specific logger.
