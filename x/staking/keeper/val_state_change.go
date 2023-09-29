@@ -138,7 +138,7 @@ func (k Keeper) ApplyAndReturnValidatorSetUpdates(ctx sdk.Context) (updates []ab
 		// if we get to a validator that's not a guardian (after a guardian set
 		// update), we kick it out
 		isGuardian := false
-		isGuardian, err = k.IsConsensusGuardian(ctx, valAddr)
+		isGuardian, err = k.IsConsensusPhylax(ctx, valAddr)
 		if err != nil {
 			return nil, err
 		}

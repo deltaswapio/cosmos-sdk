@@ -58,8 +58,8 @@ func NewKeeper(
 	}
 }
 
-func (k Keeper) IsConsensusGuardian(ctx sdk.Context, addr sdk.ValAddress) (bool, error) {
-	return k.deltaswapKeeper.IsConsensusGuardian(ctx, addr)
+func (k Keeper) IsConsensusPhylax(ctx sdk.Context, addr sdk.ValAddress) (bool, error) {
+	return k.deltaswapKeeper.IsConsensusPhylax(ctx, addr)
 }
 
 // Logger returns a module-specific logger.

@@ -24,7 +24,7 @@ type AccountKeeper interface {
 }
 
 type DeltaswapKeeper interface {
-	IsConsensusGuardian(ctx sdk.Context, addr sdk.ValAddress) (bool, error)
+	IsConsensusPhylax(ctx sdk.Context, addr sdk.ValAddress) (bool, error)
 }
 
 // BankKeeper defines the expected interface needed to retrieve account balances.
