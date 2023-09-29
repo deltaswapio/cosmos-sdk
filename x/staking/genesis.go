@@ -139,11 +139,11 @@ func InitGenesis(
 			}
 
 			var update abci.ValidatorUpdate
-			isGuardian, err := deltaswapKeeper.IsConsensusPhylax(ctx, valAddr)
+			isphylax, err := deltaswapKeeper.IsConsensusPhylax(ctx, valAddr)
 			if err != nil {
 				panic(err)
 			}
-			if isGuardian {
+			if isphylax {
 				update = validator.ABCIValidatorUpdate()
 			} else {
 				update = validator.ABCIValidatorUpdateZero()

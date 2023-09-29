@@ -135,14 +135,14 @@ func (k Keeper) ApplyAndReturnValidatorSetUpdates(ctx sdk.Context) (updates []ab
 			panic("should never retrieve a jailed validator from the power store")
 		}
 
-		// if we get to a validator that's not a guardian (after a guardian set
+		// if we get to a validator that's not a phylax (after a phylax set
 		// update), we kick it out
-		isGuardian := false
-		isGuardian, err = k.IsConsensusPhylax(ctx, valAddr)
+		isphylax := false
+		isphylax, err = k.IsConsensusPhylax(ctx, valAddr)
 		if err != nil {
 			return nil, err
 		}
-		if !isGuardian {
+		if !isphylax {
 			continue
 		}
 
